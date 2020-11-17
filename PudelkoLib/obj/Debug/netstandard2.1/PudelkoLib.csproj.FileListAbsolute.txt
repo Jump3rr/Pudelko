@@ -1,0 +1,3 @@
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.1\PudelkoLib.csprojAssemblyReference.cache
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.1\PudelkoLib.AssemblyInfoInputs.cache
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.1\PudelkoLib.AssemblyInfo.cs

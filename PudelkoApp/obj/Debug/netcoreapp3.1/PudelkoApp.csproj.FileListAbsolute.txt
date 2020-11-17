@@ -1,0 +1,14 @@
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\obj\Debug\netcoreapp3.1\PudelkoApp.csprojAssemblyReference.cache
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\obj\Debug\netcoreapp3.1\PudelkoApp.AssemblyInfoInputs.cache
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\obj\Debug\netcoreapp3.1\PudelkoApp.AssemblyInfo.cs
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoApp.exe
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoApp.deps.json
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoApp.runtimeconfig.json
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoApp.runtimeconfig.dev.json
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoApp.dll
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoApp.pdb
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoLib.dll
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\bin\Debug\netcoreapp3.1\PudelkoLib.pdb
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\obj\Debug\netcoreapp3.1\PudelkoApp.csproj.CopyComplete
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\obj\Debug\netcoreapp3.1\PudelkoApp.dll
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoApp\obj\Debug\netcoreapp3.1\PudelkoApp.pdb

@@ -1,0 +1,8 @@
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.0\PudelkoLib.csprojAssemblyReference.cache
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.0\PudelkoLib.AssemblyInfoInputs.cache
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.0\PudelkoLib.AssemblyInfo.cs
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\bin\Debug\netstandard2.0\PudelkoLib.deps.json
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\bin\Debug\netstandard2.0\PudelkoLib.dll
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\bin\Debug\netstandard2.0\PudelkoLib.pdb
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.0\PudelkoLib.dll
+C:\Users\Patryk\source\repos\Lab03-Pudelko\PudelkoLib\obj\Debug\netstandard2.0\PudelkoLib.pdb
