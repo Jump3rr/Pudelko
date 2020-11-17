@@ -16,7 +16,7 @@ namespace PudelkoApp
                 new Pudelko(216,2,41.6, UnitOfMeasure.milimeter),
                 new Pudelko(22, 89.5, 185, UnitOfMeasure.centimeter),
                 new Pudelko(1.2, 23, null),
-                new Pudelko(null, null, null)
+                //new Pudelko(null, null, null)
 
             };
         }
