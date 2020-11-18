@@ -27,11 +27,11 @@ namespace PudelkoLib
         public double Objetosc { get => Math.Round(A * B * C, 9); }
         public double Pole { get => Math.Round(2 * ((A * B) + (B * C) + (A * C)), 6); }
 
-        public Pudelko(double a = 0.1, double b = 0.1, double c=0.1, UnitOfMeasure unit = UnitOfMeasure.meter)
+        public Pudelko(double? a = null, double? b = null, double? c=null, UnitOfMeasure unit = UnitOfMeasure.meter)
         {
-            this.a = (round(a / (ushort)unit)); 
-            this.b = (round(b / (ushort)unit));
-            this.c = (round(c / (ushort)unit));
+            this.a = a != null ? round((double)a / (ushort)unit) : 0.1; 
+            this.b = b != null ? round((double)b / (ushort)unit) : 0.1;
+            this.c = c != null ? round((double)c / (ushort)unit) : 0.1;
 
             if (A <= 0 || A > 10 || B <= 0 || B > 10 || C <= 0 || C > 10)
             {
@@ -41,10 +41,6 @@ namespace PudelkoLib
         private double round(double number)
         {
             return Math.Floor(number * 1000) / 1000;
-        }
-        private Pudelko()
-        {
-
         }
 
         public string ToString(string format)
@@ -66,9 +62,9 @@ namespace PudelkoLib
                 case "m":
                     return $"{A.ToString("0.000", formatProvider)} {format} × {B.ToString("0.000", formatProvider)} {format} × {C.ToString("0.000", formatProvider)} {format}";
                 case "cm":
-                    return $"{A.ToString("0.0", formatProvider)} {format} × {B.ToString("0.0", formatProvider)} {format} × {C.ToString("0.0", formatProvider)} {format}";
+                    return $"{(A*100).ToString("0.0", formatProvider)} {format} × {(B*100).ToString("0.0", formatProvider)} {format} × {(C*100).ToString("0.0", formatProvider)} {format}";
                 case "mm":
-                    return $"{A.ToString("0", formatProvider)} {format} × {B.ToString("0", formatProvider)} {format} × {C.ToString("0", formatProvider)} {format}";
+                    return $"{(A*1000).ToString("0", formatProvider)} {format} × {(B*1000).ToString("0", formatProvider)} {format} × {(C*1000).ToString("0", formatProvider)} {format}";
                 default:
                     return $"{A.ToString("0", formatProvider)} {format} × {B.ToString("0", formatProvider)} {format} × {C.ToString("0", formatProvider)} {format}";
             }
