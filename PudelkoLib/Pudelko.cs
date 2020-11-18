@@ -50,7 +50,7 @@ namespace PudelkoLib
 
         public override string ToString()
         {
-            return this.ToString("m", CultureInfo.GetCultureInfo("en-US"));
+            return ToString("m", CultureInfo.GetCultureInfo("en-US"));
         }
 
         public string ToString(string format, IFormatProvider formatProvider)
@@ -166,7 +166,7 @@ namespace PudelkoLib
         }
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator) GetEnumerator();
+            return GetEnumerator();
         }
         public IEnumerator<double> GetEnumerator()
         {
