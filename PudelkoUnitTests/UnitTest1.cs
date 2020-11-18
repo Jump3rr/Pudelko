@@ -447,16 +447,67 @@ namespace PudelkoUnitTests
 
 
         #region Pole, Objêtoœæ ===================================
-        // ToDo
+        [DataTestMethod, TestCategory("Pole Properties")]
+        [DataRow(6, 5, 8, UnitOfMeasure.meter, 236)]
+        [DataRow(1, 2, 3, UnitOfMeasure.meter, 22)]
+        [DataRow(255, 136, 1745, UnitOfMeasure.milimeter, 1.43395)]
+        [DataRow(721, 82, 127, UnitOfMeasure.centimeter, 32.2206)]
+        public void Pole(double a, double b, double c, UnitOfMeasure unit, double expectedPole)
+        {
+            var p = new Pudelko(a, b, c, unit);
+            Assert.AreEqual(expectedPole, p.Pole);
+        }
+
+        [DataTestMethod, TestCategory("Objetosc Properties")]
+        [DataRow(2, 2, 2, UnitOfMeasure.meter, 8)]
+        [DataRow(1.560, 6.122, 2.245, UnitOfMeasure.meter, 21.4404684)]
+        [DataRow(345, 852, 3549, UnitOfMeasure.milimeter, 1.04319306)]
+        [DataRow(357, 45, 634, UnitOfMeasure.centimeter, 10.18521)]
+        public void Objetosc(double a, double b, double c, UnitOfMeasure unit, double expectedObjetosc)
+        {
+            var p = new Pudelko(a, b, c, unit);
+            Assert.AreEqual(expectedObjetosc, p.Objetosc);
+        }
 
         #endregion
 
         #region Equals ===========================================
-        // ToDo
+        [TestMethod, TestCategory("Rownosc")]
+
+        public void Equals()
+        {
+            Pudelko p1 = new Pudelko();
+            Pudelko p2 = new Pudelko(10, 25, null, UnitOfMeasure.centimeter);
+            Pudelko p3 = new Pudelko(100, null, null, UnitOfMeasure.milimeter);
+            Pudelko p4 = new Pudelko(0.1, 0.1, 0.1);
+            Pudelko p5 = new Pudelko(1, 2, 8);
+
+            Assert.IsTrue(p1.Equals(p3));
+            Assert.IsTrue(p1.Equals(p4));
+            Assert.IsTrue(p3.Equals(p4));
+            Assert.IsFalse(p1.Equals(p2));
+            Assert.IsFalse(p1.Equals(p5));
+            Assert.IsFalse(p5.Equals(p2));
+
+        }
         #endregion
 
         #region Operators overloading ===========================
-        // ToDo
+        [TestMethod, TestCategory("Laczenie")]
+        [DataRow(1, 1, 1, 1, 1, 1, 2, 1, 1)]
+        [DataRow(3, 4, 5, 5, 3, 4, 6, 5, 4)]
+        [DataRow(1.7, 1.6, 0.7, 0.5, 0.6, 0.72, 2.2, 1.6, 0.7)]
+        [DataRow(8, 2, 4, 10, 1, 1, 10, 4, 3)]
+
+        public void Laczenie(double a, double b, double c, double d, double e, double f, double g, double h, double i)
+        {
+            Pudelko p1 = new Pudelko(a, b, c);
+            Pudelko p2 = new Pudelko(d, e, f);
+            Pudelko p3 = p2 + p1;
+            Pudelko p3New = new Pudelko(g, h, i);
+
+            Assert.AreEqual(p3New, p3);
+        }
         #endregion
 
         #region Conversions =====================================

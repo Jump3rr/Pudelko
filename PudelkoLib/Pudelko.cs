@@ -27,12 +27,38 @@ namespace PudelkoLib
         public double Objetosc { get => Math.Round(A * B * C, 9); }
         public double Pole { get => Math.Round(2 * ((A * B) + (B * C) + (A * C)), 6); }
 
-        public Pudelko(double? a = null, double? b = null, double? c=null, UnitOfMeasure unit = UnitOfMeasure.meter)
+        public Pudelko(double? a = null, double? b = null, double? c= null, UnitOfMeasure unit = UnitOfMeasure.meter)
         {
             this.a = a != null ? round((double)a / (ushort)unit) : 0.1; 
             this.b = b != null ? round((double)b / (ushort)unit) : 0.1;
             this.c = c != null ? round((double)c / (ushort)unit) : 0.1;
 
+            if (A <= 0 || A > 10 || B <= 0 || B > 10 || C <= 0 || C > 10)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+        public Pudelko(double a, double b, UnitOfMeasure unit = UnitOfMeasure.meter)
+        {
+            this.a = round(a / (ushort)unit);
+            this.b = round(b / (ushort)unit);
+
+            if (A <= 0 || A > 10 || B <= 0 || B > 10 || C <= 0 || C > 10)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+        public Pudelko(double a, UnitOfMeasure unit = UnitOfMeasure.meter)
+        {
+            this.a = round(a / (ushort)unit);
+
+            if (A <= 0 || A > 10 || B <= 0 || B > 10 || C <= 0 || C > 10)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+        public Pudelko(UnitOfMeasure unit)
+        {
             if (A <= 0 || A > 10 || B <= 0 || B > 10 || C <= 0 || C > 10)
             {
                 throw new ArgumentOutOfRangeException();
@@ -113,7 +139,7 @@ namespace PudelkoLib
             double newA;
             double newB;
             double newC;
-            if (p2Arr[0] > p1Arr[1])
+            if (p2Arr[0] > p1Arr[1] && p2Arr[0] < p1[2])
             {
                 newA = p1Arr[0] + p2Arr[2];
                 if (p1Arr[2] > p2Arr[1])
@@ -122,7 +148,7 @@ namespace PudelkoLib
                     newB = p2Arr[1];
                 newC = p2Arr[0];
             }
-            else if (p1Arr[0] > p2Arr[1])
+            else if (p1Arr[0] > p2Arr[1] && p1Arr[0] < p2Arr[2])
             {
                 newA = p1Arr[2] + p2Arr[0];
                 newC = p1Arr[0];
@@ -170,34 +196,9 @@ namespace PudelkoLib
         }
         public IEnumerator<double> GetEnumerator()
         {
-            return new PudelkoEnumerator(this);
-        }
-    }
-    class PudelkoEnumerator : IEnumerator<double>
-    {
-        private readonly Pudelko p;
-
-        public PudelkoEnumerator(Pudelko pudelko)
-        {
-            p = pudelko;
-        }
-        private int i = 0;
-        public object Current => p[i++];
-
-        double IEnumerator<double>.Current => p[i++];
-
-
-        public bool MoveNext()
-        {
-            return i <= 1;
-        }
-
-        public void Reset()
-        {
-            i = 0;
-        }
-        public void Dispose()
-        {
+            yield return A;
+            yield return B;
+            yield return C;
         }
     }
 

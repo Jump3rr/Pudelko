@@ -12,14 +12,18 @@ namespace PudelkoApp
             {
                 new Pudelko(),
                 new Pudelko(1),
+                new Pudelko(1,2),
                 new Pudelko(1,2,3),
-                new Pudelko(9.9, 4, 5),
+                new Pudelko(9.9, null, 5),
+                new Pudelko(UnitOfMeasure.centimeter),
+                new Pudelko(1, UnitOfMeasure.centimeter),
+                new Pudelko(2, UnitOfMeasure.centimeter),
                 new Pudelko(2156,2,41.6, UnitOfMeasure.milimeter),
                 new Pudelko(22, 89.5, 185, UnitOfMeasure.centimeter),
                 new Pudelko(1.2, 2.3, 0.1),
                 new Pudelko(4, 1, 2).Kompresuj(),
                 new Pudelko(2,2,2),
-                new Pudelko(4,2,1)
+                new Pudelko(4,2,1),
 
             };
 
