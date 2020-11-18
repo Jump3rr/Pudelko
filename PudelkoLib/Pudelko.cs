@@ -5,7 +5,7 @@ using System.Globalization;
 
 namespace PudelkoLib
 {
-    public sealed class Pudelko : IFormattable, IEquatable<Pudelko>//, IEnumerable
+    public sealed class Pudelko : IFormattable, IEquatable<Pudelko>, IEnumerable
     {
 
         private readonly double a = 0.1;
@@ -14,24 +14,24 @@ namespace PudelkoLib
 
         public double A
         {
-            get => Math.Round(a, 3);
+            get => Convert.ToDouble(a.ToString("0.000"));
         }
         public double B
         {
-            get => Math.Round(b, 3);
+            get => Convert.ToDouble(b.ToString("0.000"));
         }
         public double C
         {
-            get => Math.Round(c, 3);
+            get => Convert.ToDouble(c.ToString("0.000"));
         }
         public double Objetosc { get => Math.Round(A * B * C, 9); }
         public double Pole { get => Math.Round(2 * ((A * B) + (B * C) + (A * C)), 6); }
 
-        public Pudelko(double? a=null, double? b=null, double? c=null, UnitOfMeasure unit = UnitOfMeasure.meter)
+        public Pudelko(double a = 0.1, double b = 0.1, double c=0.1, UnitOfMeasure unit = UnitOfMeasure.meter)
         {
-            this.a = (a != null ? (round((double)a / (ushort)unit)) : 0.1);
-            this.b = (b != null ? (round((double)b / (ushort)unit)) : 0.1);
-            this.c = (c != null ? (round((double)c / (ushort)unit)) : 0.1);
+            this.a = (round(a / (ushort)unit)); 
+            this.b = (round(b / (ushort)unit));
+            this.c = (round(c / (ushort)unit));
 
             if (A <= 0 || A > 10 || B <= 0 || B > 10 || C <= 0 || C > 10)
             {
@@ -41,6 +41,10 @@ namespace PudelkoLib
         private double round(double number)
         {
             return Math.Floor(number * 1000) / 1000;
+        }
+        private Pudelko()
+        {
+
         }
 
         public string ToString(string format)
@@ -60,6 +64,10 @@ namespace PudelkoLib
             switch (format)
             {
                 case "m":
+                    return $"{A.ToString("0.000", formatProvider)} {format} × {B.ToString("0.000", formatProvider)} {format} × {C.ToString("0.000", formatProvider)} {format}";
+                case "cm":
+                    return $"{A.ToString("0.0", formatProvider)} {format} × {B.ToString("0.0", formatProvider)} {format} × {C.ToString("0.0", formatProvider)} {format}";
+                case "mm":
                     return $"{A.ToString("0", formatProvider)} {format} × {B.ToString("0", formatProvider)} {format} × {C.ToString("0", formatProvider)} {format}";
                 default:
                     return $"{A.ToString("0", formatProvider)} {format} × {B.ToString("0", formatProvider)} {format} × {C.ToString("0", formatProvider)} {format}";
@@ -106,19 +114,79 @@ namespace PudelkoLib
 
             Array.Sort(p1Arr);
             Array.Sort(p2Arr);
+            
+            double newA = p1Arr[0] + p2Arr[2];
+            double newB;
+            double newC;
+            if (p1Arr[1] > p2Arr[1])
+                newB = p1Arr[1];
+            else
+                newB = p2Arr[1];
 
-            double newA = p1Arr[0] + p2Arr[0];
-            double newB = p1Arr[1] + p2Arr[1];
-            double newC = p1Arr[2] + p2Arr[2];
+            if (p1Arr[2] > p2Arr[0])
+                newC = p1Arr[2];
+            else
+                newC = p2Arr[0];
 
             return new Pudelko(newA, newB, newC);
+        }
+
+        public double this[int indexer]
+        {
+            get
+            {
+                switch (indexer)
+                {
+                    case 0:
+                        return A;
+                    case 1:
+                        return B;
+                    case 2:
+                        return C;
+                    default:
+                        throw new IndexOutOfRangeException();
+                }
+            }
+        }
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return (IEnumerator) GetEnumerator();
+        }
+        public IEnumerator<double> GetEnumerator()
+        {
+            return new PudelkoEnumerator(this);
         }
 
 
 
     }
+    class PudelkoEnumerator : IEnumerator<double>
+    {
+        private readonly Pudelko p;
+
+        public PudelkoEnumerator(Pudelko pudelko)
+        {
+            p = pudelko;
+        }
+        private int i = 0;
+        public object Current => p[i++];
+
+        double IEnumerator<double>.Current => p[i++];
 
 
+        public bool MoveNext()
+        {
+            return i <= 1;
+        }
+
+        public void Reset()
+        {
+            i = 0;
+        }
+        public void Dispose()
+        {
+        }
+    }
 
     public enum UnitOfMeasure : ushort
     {
