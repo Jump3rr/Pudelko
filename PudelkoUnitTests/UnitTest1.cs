@@ -497,7 +497,10 @@ namespace PudelkoUnitTests
         [DataRow(1, 1, 1, 1, 1, 1, 2, 1, 1)]
         [DataRow(3, 4, 5, 5, 3, 4, 6, 5, 4)]
         [DataRow(1.7, 1.6, 0.7, 0.5, 0.6, 0.72, 2.2, 1.6, 0.7)]
-        [DataRow(8, 2, 4, 10, 1, 1, 10, 4, 3)]
+        [DataRow(8, 2, 4, 10, 1, 1, 10, 5, 2)]
+        [DataRow(1.1, 0.6, 0.8, 0.6, 0.5, 0.7, 1.6, 0.6, 0.8)]
+        [DataRow(1.7, 0.6, 0.8, 0.2, 0.6, 1.7, 1.7, 1.0, 0.6)]
+
 
         public void Laczenie(double a, double b, double c, double d, double e, double f, double g, double h, double i)
         {
