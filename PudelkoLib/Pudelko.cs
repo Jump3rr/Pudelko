@@ -66,7 +66,7 @@ namespace PudelkoLib
                 case "mm":
                     return $"{(A*1000).ToString("0", formatProvider)} {format} × {(B*1000).ToString("0", formatProvider)} {format} × {(C*1000).ToString("0", formatProvider)} {format}";
                 default:
-                    return $"{A.ToString("0", formatProvider)} {format} × {B.ToString("0", formatProvider)} {format} × {C.ToString("0", formatProvider)} {format}";
+                    throw new FormatException();
             }
         }
         public bool Equals(Pudelko pudelko)
@@ -110,20 +110,40 @@ namespace PudelkoLib
 
             Array.Sort(p1Arr);
             Array.Sort(p2Arr);
-            
-            double newA = p1Arr[0] + p2Arr[2];
+            double newA;
             double newB;
             double newC;
-            if (p1Arr[1] > p2Arr[1])
-                newB = p1Arr[1];
-            else
-                newB = p2Arr[1];
-
-            if (p1Arr[2] > p2Arr[0])
-                newC = p1Arr[2];
-            else
+            if (p2Arr[0] > p1Arr[1])
+            {
+                newA = p1Arr[0] + p2Arr[2];
+                if (p1Arr[2] > p2Arr[1])
+                    newB = p1Arr[2];
+                else
+                    newB = p2Arr[1];
                 newC = p2Arr[0];
+            }
+            else if (p1Arr[0] > p2Arr[1])
+            {
+                newA = p1Arr[2] + p2Arr[0];
+                newC = p1Arr[0];
+                if (p2Arr[2] > p1Arr[1])
+                    newB = p2Arr[2];
+                else
+                    newB = p1Arr[1];
+            }
+            else
+            {
+                newA = p1Arr[0] + p2Arr[0];
+                if (p1Arr[1] > p2Arr[1])
+                    newB = p1Arr[1];
+                else
+                    newB = p2Arr[1];
+                if (p1Arr[2] > p2Arr[2])
+                    newC = p1Arr[2];
+                else
+                    newC = p2Arr[2];
 
+            }
             return new Pudelko(newA, newB, newC);
         }
 
@@ -152,9 +172,6 @@ namespace PudelkoLib
         {
             return new PudelkoEnumerator(this);
         }
-
-
-
     }
     class PudelkoEnumerator : IEnumerator<double>
     {
